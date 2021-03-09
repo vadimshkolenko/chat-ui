@@ -1,8 +1,17 @@
 import React from 'react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom'
 
 const App = () => {
-  const test = 3
-  return <div className="App">Chat App</div>
+  return (
+    <Router>
+      <div className="App">Chat App</div>
+    </Router>
+  )
 }
 
 export default App

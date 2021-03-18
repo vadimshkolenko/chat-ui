@@ -10,7 +10,7 @@ import { token } from './static'
 import Registration from './pages/Registration/Registration'
 
 const App: FC = () => {
-  const privateRoute = (page) => {
+  const privateRoute = (page: any) => {
     if (localStorage.getItem(token)) {
       return page
     } else {

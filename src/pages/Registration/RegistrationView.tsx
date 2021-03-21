@@ -2,12 +2,56 @@ import React, { FC } from 'react'
 
 import useInput from '../../hooks/useInput'
 
-const RegistrationView: FC = () => {
+interface Props {
+  registrationCallback: ({ email, password, username: string }) => void
+  errorMessage: string
+  success: boolean
+  isLoading: boolean
+}
+
+const RegistrationView: FC<Props> = ({
+  registrationCallback,
+  errorMessage,
+  success,
+  isLoading,
+}) => {
+  const username = useInput('')
   const email = useInput('')
   const password = useInput('')
 
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    registrationCallback({
+      username: username.value,
+      email: email.value,
+      password: password.value,
+    })
+  }
+
+  if (success) {
+    return (
+      <div>
+        <p>Поздравляем вы зарегистрированы!</p>
+        <p>На указанную вами почту отправлено письмо.</p>
+        <p>
+          Для завершения регистрации, пожалуйста, перейдите по ссылке из этого
+          письма.
+        </p>
+      </div>
+    )
+  }
+
   return (
-    <form onSubmit={() => console.log('submit')}>
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor="username">Логин</label>
+        <input
+          type="text"
+          id="username"
+          value={username.value}
+          onChange={username.onChange}
+        />
+      </div>
       <div>
         <label htmlFor="email">Email</label>
         <input
@@ -26,7 +70,10 @@ const RegistrationView: FC = () => {
           onChange={password.onChange}
         />
       </div>
-      <button type="submit">Зарегистрироваться</button>
+      {errorMessage && <p>{errorMessage}</p>}
+      <button disabled={isLoading} type="submit">
+        Зарегистрироваться
+      </button>
     </form>
   )
 }

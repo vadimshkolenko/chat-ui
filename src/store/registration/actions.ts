@@ -5,14 +5,14 @@ import { RegistrationActionType, UserData } from './types'
 import {
   REGISTRATION_ERROR,
   REGISTRATION_SUCCESS,
-  START_REQUEST,
+  START_REGISTRATION_REQUEST,
 } from './constants'
 
 export const registration = (userData: UserData) => async (
   dispatch: Dispatch<RegistrationActionType>
 ): Promise<void> => {
   try {
-    dispatch({ type: START_REQUEST })
+    dispatch({ type: START_REGISTRATION_REQUEST })
     await api.post('/register', userData)
     dispatch({ type: REGISTRATION_SUCCESS })
   } catch (err) {

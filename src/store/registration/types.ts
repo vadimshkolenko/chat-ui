@@ -1,7 +1,7 @@
 import {
   REGISTRATION_SUCCESS,
   REGISTRATION_ERROR,
-  START_REQUEST,
+  START_REGISTRATION_REQUEST,
 } from './constants'
 
 export interface UserData {
@@ -13,7 +13,7 @@ export interface UserData {
 export type ActionTypes =
   | typeof REGISTRATION_SUCCESS
   | typeof REGISTRATION_ERROR
-  | typeof START_REQUEST
+  | typeof START_REGISTRATION_REQUEST
 
 export interface RegistrationActionType {
   type: ActionTypes

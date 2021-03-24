@@ -2,7 +2,7 @@ import { RegistrationActionType, RegistrationState } from './types'
 import {
   REGISTRATION_ERROR,
   REGISTRATION_SUCCESS,
-  START_REQUEST,
+  START_REGISTRATION_REQUEST,
 } from './constants'
 
 const initialState = { errorMessage: null, success: false, isLoading: false }
@@ -12,7 +12,7 @@ export const registrationReducer = (
   action: RegistrationActionType
 ) => {
   switch (action.type) {
-    case START_REQUEST:
+    case START_REGISTRATION_REQUEST:
       return { ...state, isLoading: true }
     case REGISTRATION_SUCCESS:
       return { ...state, success: true, isLoading: false }

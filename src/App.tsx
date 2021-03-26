@@ -9,6 +9,7 @@ import {
 import { token } from './static'
 import Registration from './pages/Registration/Registration'
 import Confirmation from './pages/Confirmation/Confirmation'
+import Login from './pages/Login/Login'
 
 const App: FC = () => {
   // TODO исправить типизацию
@@ -16,7 +17,7 @@ const App: FC = () => {
     if (localStorage.getItem(token)) {
       return page
     } else {
-      return <Redirect to="/auth" />
+      return <Redirect to="/login" />
     }
   }
 
@@ -24,6 +25,7 @@ const App: FC = () => {
     <Router>
       <div className="App">
         <Switch>
+          <Route path="/login" component={Login} />
           <Route path="/registration" component={Registration} />
           <Route path="/confirm/:verificationToken" component={Confirmation} />
           <Route
@@ -31,7 +33,6 @@ const App: FC = () => {
             path="/"
             render={() => privateRoute(<div>authorized</div>)}
           />
-          <Route path="/auth" render={() => <div>auth</div>} />
         </Switch>
       </div>
     </Router>

@@ -4,21 +4,18 @@ import { Redirect } from 'react-router-dom'
 import useInput from '../../hooks/useInput'
 
 interface Props {
-  registrationCallback: ({ email, password, username: string }) => void
+  loginCallback: ({ email, password: string }) => void
   errorMessage: string
-  success: boolean
   isLoading: boolean
   token: string
 }
 
-const RegistrationView: FC<Props> = ({
-  registrationCallback,
+const LoginView: FC<Props> = ({
   errorMessage,
-  success,
   isLoading,
+  loginCallback,
   token,
 }) => {
-  const username = useInput('')
   const email = useInput('')
   const password = useInput('')
 
@@ -28,37 +25,14 @@ const RegistrationView: FC<Props> = ({
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    registrationCallback({
-      username: username.value,
+    loginCallback({
       email: email.value,
       password: password.value,
     })
   }
 
-  if (success) {
-    return (
-      <div>
-        <p>Поздравляем вы зарегистрированы!</p>
-        <p>На указанную вами почту отправлено письмо.</p>
-        <p>
-          Для завершения регистрации, пожалуйста, перейдите по ссылке из этого
-          письма.
-        </p>
-      </div>
-    )
-  }
-
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="username">Логин</label>
-        <input
-          type="text"
-          id="username"
-          value={username.value}
-          onChange={username.onChange}
-        />
-      </div>
       <div>
         <label htmlFor="email">Email</label>
         <input
@@ -79,10 +53,10 @@ const RegistrationView: FC<Props> = ({
       </div>
       {errorMessage && <p>{errorMessage}</p>}
       <button disabled={isLoading} type="submit">
-        Зарегистрироваться
+        Войти
       </button>
     </form>
   )
 }
 
-export default RegistrationView
+export default LoginView

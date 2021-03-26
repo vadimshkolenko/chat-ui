@@ -1,24 +1,16 @@
 import { ConfirmationActionType, ConfirmationState } from './types'
-import {
-  CONFIRMATION_SUCCESS,
-  CONFIRMATION_ERROR,
-  START_CONFIRMATION_REQUEST,
-} from './constants'
+import { CONFIRMATION_ERROR } from './constants'
 
-const initialState = { errorMessage: null, isLoading: false }
+const initialState = { errorMessage: null }
 
 export const confirmationReducer = (
   state: ConfirmationState = initialState,
   action: ConfirmationActionType
 ) => {
   switch (action.type) {
-    case START_CONFIRMATION_REQUEST:
-      return { ...state, isLoading: true }
-    case CONFIRMATION_SUCCESS:
-      return { ...state, isLoading: false }
     case CONFIRMATION_ERROR:
       const errorMessage = action.payload
-      return { ...state, errorMessage, isLoading: false }
+      return { ...state, errorMessage }
     default:
       return state
   }

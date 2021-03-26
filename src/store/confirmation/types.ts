@@ -1,13 +1,7 @@
-import {
-  START_CONFIRMATION_REQUEST,
-  CONFIRMATION_SUCCESS,
-  CONFIRMATION_ERROR,
-} from './constants'
+import { CONFIRMATION_ERROR } from './constants'
+import { SET_TOKEN } from '../constants'
 
-export type ActionTypes =
-  | typeof CONFIRMATION_SUCCESS
-  | typeof CONFIRMATION_ERROR
-  | typeof START_CONFIRMATION_REQUEST
+export type ActionTypes = typeof CONFIRMATION_ERROR | typeof SET_TOKEN
 
 export interface ConfirmationActionType {
   type: ActionTypes
@@ -16,5 +10,4 @@ export interface ConfirmationActionType {
 
 export interface ConfirmationState {
   errorMessage: string
-  isLoading: boolean
 }

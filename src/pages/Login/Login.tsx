@@ -1,37 +1,34 @@
 import React, { FC } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { RootState } from '../../store/reducers'
-import { registration } from '../../store/registration/actions'
+import LoginView from './LoginView'
+import { login } from '../../store/login/actions'
 import {
-  selectErrorMessage,
-  selectSuccess,
   selectIsLoading,
-} from '../../store/registration/selectors'
+  selectErrorMessage,
+} from '../../store/login/selectors'
 import { selectToken } from '../../store/account/selectors'
-import RegistrationView from './RegistrationView'
+import { RootState } from '../../store/reducers'
 
-const Registration: FC = () => {
+const Login: FC = () => {
   const dispatch = useDispatch()
 
   const errorMessage = useSelector((state: RootState) =>
     selectErrorMessage(state)
   )
-  const success = useSelector((state: RootState) => selectSuccess(state))
   const isLoading = useSelector((state: RootState) => selectIsLoading(state))
   const token = useSelector((state: RootState) => selectToken(state))
 
-  const registrationCallback = (data) => dispatch(registration(data))
+  const loginCallback = (data) => dispatch(login(data))
 
   return (
-    <RegistrationView
-      registrationCallback={registrationCallback}
+    <LoginView
+      loginCallback={loginCallback}
       errorMessage={errorMessage}
-      success={success}
       isLoading={isLoading}
       token={token}
     />
   )
 }
 
-export default Registration
+export default Login

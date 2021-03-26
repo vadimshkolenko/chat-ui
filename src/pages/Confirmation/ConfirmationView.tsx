@@ -4,23 +4,23 @@ import { Redirect } from 'react-router-dom'
 interface Props {
   confirmCallback: () => void
   errorMessage: string
-  isLoading: boolean
+  token: string
 }
 
 const ConfirmationView: FC<Props> = ({
   confirmCallback,
   errorMessage,
-  isLoading,
+  token,
 }: Props) => {
   useEffect(() => confirmCallback(), [])
 
-  if (isLoading) {
-    return <div>Подождите, пожалуйста...</div>
-  } else if (errorMessage) {
+  if (token) return <Redirect to={'/'} />
+
+  if (errorMessage) {
     return <p>{errorMessage}</p>
-  } else {
-    return <Redirect to={'/'} />
   }
+
+  return <div>Подождите, пожалуйста...</div>
 }
 
 export default ConfirmationView

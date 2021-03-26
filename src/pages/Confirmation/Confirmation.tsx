@@ -3,10 +3,8 @@ import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { confirm } from '../../store/confirmation/actions'
-import {
-  selectErrorMessage,
-  selectIsLoading,
-} from '../../store/confirmation/selectors'
+import { selectErrorMessage } from '../../store/confirmation/selectors'
+import { selectToken } from '../../store/account/selectors'
 import ConfirmationView from './ConfirmationView'
 import { RootState } from '../../store/reducers'
 
@@ -18,7 +16,8 @@ const Confirmation: FC = () => {
   const errorMessage = useSelector((state: RootState) =>
     selectErrorMessage(state)
   )
-  const isLoading = useSelector((state: RootState) => selectIsLoading(state))
+
+  const token = useSelector((state: RootState) => selectToken(state))
 
   const confirmCallback = () => dispatch(confirm(verificationToken))
 
@@ -26,7 +25,7 @@ const Confirmation: FC = () => {
     <ConfirmationView
       confirmCallback={confirmCallback}
       errorMessage={errorMessage}
-      isLoading={isLoading}
+      token={token}
     />
   )
 }

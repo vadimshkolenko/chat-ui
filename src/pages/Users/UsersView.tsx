@@ -22,8 +22,6 @@ const UsersView: FC<Props> = ({
     getUsersCallback()
   }, [])
 
-  console.log(users)
-
   if (isLoading) {
     return <div>Загрузка...</div>
   } else if (errorMessage) {

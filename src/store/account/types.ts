@@ -1,12 +1,13 @@
-import { SET_TOKEN } from '../constants'
+import { SET_USER_DATA } from '../constants'
 
-export type ActionTypes = typeof SET_TOKEN
+export type ActionTypes = typeof SET_USER_DATA
 
 export interface AccountActionType {
   type: ActionTypes
-  payload?: string
+  payload?: { accessToken: string; id: string }
 }
 
 export interface AccountState {
   token: string
+  userId: string
 }

@@ -23,7 +23,7 @@ const RegistrationView: FC<Props> = ({
   const password = useInput('')
 
   if (token) {
-    return <Redirect to={'/'} />
+    return <Redirect to={'/chats'} />
   }
 
   const handleSubmit = (event) => {

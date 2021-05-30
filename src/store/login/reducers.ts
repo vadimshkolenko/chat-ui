@@ -14,7 +14,7 @@ export const loginReducer = (
       return { ...state, isLoading: false }
     case LOGIN_ERROR:
       const errorMessage = action.payload
-      return { ...state, errorMessage }
+      return { ...state, errorMessage, isLoading: false }
     default:
       return state
   }

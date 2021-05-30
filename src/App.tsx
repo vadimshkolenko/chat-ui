@@ -10,6 +10,7 @@ import { token } from './static'
 import Registration from './pages/Registration/Registration'
 import Confirmation from './pages/Confirmation/Confirmation'
 import Login from './pages/Login/Login'
+import Chats from './pages/Chats/Chats'
 
 const App: FC = () => {
   // TODO исправить типизацию
@@ -28,11 +29,7 @@ const App: FC = () => {
           <Route path="/login" component={Login} />
           <Route path="/registration" component={Registration} />
           <Route path="/confirm/:verificationToken" component={Confirmation} />
-          <Route
-            exact
-            path="/"
-            render={() => privateRoute(<div>authorized</div>)}
-          />
+          <Route exact path="/chats" render={() => privateRoute(<Chats />)} />
         </Switch>
       </div>
     </Router>

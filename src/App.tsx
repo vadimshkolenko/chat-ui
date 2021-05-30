@@ -11,6 +11,7 @@ import Registration from './pages/Registration/Registration'
 import Confirmation from './pages/Confirmation/Confirmation'
 import Login from './pages/Login/Login'
 import Chats from './pages/Chats/Chats'
+import Users from './pages/Users/Users'
 
 const App: FC = () => {
   // TODO исправить типизацию
@@ -30,6 +31,7 @@ const App: FC = () => {
           <Route path="/registration" component={Registration} />
           <Route path="/confirm/:verificationToken" component={Confirmation} />
           <Route exact path="/chats" render={() => privateRoute(<Chats />)} />
+          <Route exact path="/users" render={() => privateRoute(<Users />)} />
         </Switch>
       </div>
     </Router>

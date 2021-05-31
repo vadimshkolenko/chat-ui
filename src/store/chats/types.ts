@@ -10,7 +10,7 @@ export type ActionTypes = typeof SELECT_CHAT | typeof ADD_MESSAGE
 
 export interface ChatsActionType {
   type: ActionTypes
-  payload?: string | any
+  payload?: string | any // Todo исправить
 }
 
 export interface ChatsState {

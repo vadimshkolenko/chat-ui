@@ -1,4 +1,4 @@
-import { SELECT_CHAT, ADD_MESSAGE } from './constants'
+import { ADD_MESSAGE } from './constants'
 
 export interface Message {
   content: string
@@ -6,7 +6,7 @@ export interface Message {
   id: string
 }
 
-export type ActionTypes = typeof SELECT_CHAT | typeof ADD_MESSAGE
+export type ActionTypes = typeof ADD_MESSAGE
 
 export interface ChatsActionType {
   type: ActionTypes

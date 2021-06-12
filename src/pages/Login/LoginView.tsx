@@ -1,5 +1,13 @@
 import React, { FC } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, NavLink } from 'react-router-dom'
+import {
+  Container,
+  TextField,
+  Button,
+  Grid,
+  Typography,
+  Box,
+} from '@material-ui/core'
 
 import useInput from '../../hooks/useInput'
 
@@ -32,30 +40,62 @@ const LoginView: FC<Props> = ({
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="email">Email</label>
-        <input
+    <Container component="main" maxWidth="xs">
+      <form onSubmit={handleSubmit}>
+        <TextField
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          label="Email Address"
+          name="email"
+          autoComplete="email"
+          autoFocus
           type="email"
           id="email"
           value={email.value}
           onChange={email.onChange}
         />
-      </div>
-      <div>
-        <label htmlFor="password">Пароль</label>
-        <input
+        <TextField
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          name="password"
+          label="Password"
+          autoComplete="current-password"
           type="password"
           id="password"
           value={password.value}
           onChange={password.onChange}
         />
-      </div>
-      {errorMessage && <p>{errorMessage}</p>}
-      <button disabled={isLoading} type="submit">
-        Войти
-      </button>
-    </form>
+        {errorMessage && (
+          <Grid container alignItems="center" justify="center">
+            <Typography variant="body1" component="p" color="error">
+              {errorMessage}
+            </Typography>
+          </Grid>
+        )}
+        <Button
+          fullWidth
+          variant="contained"
+          color="primary"
+          disabled={isLoading}
+          type="submit"
+        >
+          Войти
+        </Button>
+      </form>
+      <Box mt={1}>
+        <Grid container alignItems="center" justify="center">
+          <NavLink to={'/registration'}>
+            <Typography variant="caption" component="p" color="primary">
+              Еще нет аккаунта? Зарегистрируйся!
+            </Typography>
+          </NavLink>
+        </Grid>
+      </Box>
+    </Container>
   )
 }
 

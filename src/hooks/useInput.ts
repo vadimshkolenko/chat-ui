@@ -1,14 +1,14 @@
 import { useState, ChangeEvent } from 'react'
 
-interface returnData {
-  value: string | number
+export interface ReturnData {
+  value: string
   onChange: (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => void
   clear: () => void
 }
 
-const useInput = (initialValue: string | number): returnData => {
+const useInput = (initialValue: string): ReturnData => {
   const [value, setValue] = useState(initialValue)
 
   const onChange = (

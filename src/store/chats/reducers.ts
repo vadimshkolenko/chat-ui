@@ -1,5 +1,5 @@
 import { ChatsState, ChatsActionType } from './types'
-import { ADD_MESSAGE, SELECT_CHAT } from './constants'
+import { ADD_MESSAGE } from './constants'
 
 const initialState = { chatId: null, chats: {} }
 
@@ -8,9 +8,6 @@ export const chatsReducer = (
   action: ChatsActionType
 ) => {
   switch (action.type) {
-    case SELECT_CHAT:
-      const chatId = action.payload
-      return { ...state, chatId }
     case ADD_MESSAGE:
       const message = action.payload
       return {

@@ -1,5 +1,6 @@
 import React, { FC, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
+import { Container, Grid } from '@material-ui/core'
 
 import { User } from '../../store/users/types'
 
@@ -8,7 +9,6 @@ interface Props {
   isLoading: boolean
   users: Array<User> | string // Todo исправить
   getUsersCallback: () => void
-  selectChatCallback: (id: string) => void
 }
 
 const UsersView: FC<Props> = ({
@@ -16,7 +16,6 @@ const UsersView: FC<Props> = ({
   isLoading,
   users,
   getUsersCallback,
-  selectChatCallback,
 }) => {
   useEffect(() => {
     getUsersCallback()
@@ -28,18 +27,16 @@ const UsersView: FC<Props> = ({
     return <div>{errorMessage}</div>
   } else
     return (
-      <div>
-        {Array.isArray(users) &&
-          users.map((user) => (
-            <NavLink
-              to={'/chats'}
-              key={user.id}
-              onClick={() => selectChatCallback(user.id)}
-            >
-              <p>{user.username}</p>
-            </NavLink>
-          ))}
-      </div>
+      <Container component="main" maxWidth="xs">
+        <Grid container direction="column" alignItems="center" justify="center">
+          {Array.isArray(users) &&
+            users.map((user) => (
+              <NavLink to={`/chat/${user.id}`} key={user.id}>
+                <p>{user.username}</p>
+              </NavLink>
+            ))}
+        </Grid>
+      </Container>
     )
 }
 

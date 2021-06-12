@@ -2,7 +2,6 @@ import React, { FC } from 'react'
 
 import { RootState } from '../../store/reducers'
 import { getUsers } from '../../store/users/actions'
-import { selectChat } from '../../store/chats/actions'
 import {
   selectUsers,
   selectErrorMessage,
@@ -23,15 +22,12 @@ const Users: FC = () => {
 
   const getUsersCallback = () => dispatch(getUsers())
 
-  const selectChatCallback = (id: string) => dispatch(selectChat(id))
-
   return (
     <UsersView
       errorMessage={errorMessage}
       isLoading={isLoading}
       users={users}
       getUsersCallback={getUsersCallback}
-      selectChatCallback={selectChatCallback}
     />
   )
 }

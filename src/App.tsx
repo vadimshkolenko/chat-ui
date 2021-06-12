@@ -30,7 +30,11 @@ const App: FC = () => {
           <Route path="/login" component={Login} />
           <Route path="/registration" component={Registration} />
           <Route path="/confirm/:verificationToken" component={Confirmation} />
-          <Route exact path="/chats" render={() => privateRoute(<Chats />)} />
+          <Route
+            exact
+            path="/chat/:chatId"
+            render={() => privateRoute(<Chats />)}
+          />
           <Route exact path="/users" render={() => privateRoute(<Users />)} />
         </Switch>
       </div>

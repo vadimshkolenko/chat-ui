@@ -14,7 +14,7 @@ const ConfirmationView: FC<Props> = ({
 }: Props) => {
   useEffect(() => confirmCallback(), [])
 
-  if (token) return <Redirect to={'/chats'} />
+  if (token) return <Redirect to={'/users'} />
 
   if (errorMessage) {
     return <p>{errorMessage}</p>

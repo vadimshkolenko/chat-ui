@@ -1,3 +1,4 @@
 export const START_USERS_REQUEST = 'START_USERS_REQUEST'
 export const USERS_SUCCESS = 'USERS_SUCCESS'
 export const USERS_ERROR = 'USERS_ERROR'
+export const USERS_PAGE_SIZE = 20

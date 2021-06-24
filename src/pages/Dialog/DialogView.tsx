@@ -16,7 +16,7 @@ interface IProps {
   addMessageCallback: (message: MessageType) => void
 }
 
-const ChatsView: FC<IProps> = ({
+const DialogView: FC<IProps> = ({
   token,
   userId,
   currentChatId,
@@ -111,4 +111,4 @@ const useStyles = makeStyles({
   },
 })
 
-export default ChatsView
+export default DialogView

@@ -13,17 +13,17 @@ interface Props {
 const Message: FC<Props> = ({ message, userId }) => {
   const classes = useStyles()
 
+  const containerStyles = classnames(
+    classes.container,
+    userId === message.from ? classes.ownMessage : classes.interlocutorMessage
+  )
+
   return (
     <Paper
       key={message.id}
       variant="elevation"
       elevation={1}
-      className={classnames(
-        classes.container,
-        userId === message.from
-          ? classes.ownMessage
-          : classes.interlocutorMessage
-      )}
+      className={containerStyles}
     >
       <Box p={1}>
         <Typography

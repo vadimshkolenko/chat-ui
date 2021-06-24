@@ -1,8 +1,9 @@
 import React, { FC, useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
-import { Container, Grid, Button } from '@material-ui/core'
+import { Container, Grid, Button, Box } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 
 import { User } from '../../store/users/types'
+import UserCard from '../../components/UserCard'
 
 interface Props {
   errorMessage: string
@@ -21,6 +22,8 @@ const UsersView: FC<Props> = ({
   page,
   shouldLoadMore,
 }) => {
+  const classes = useStyles()
+
   useEffect(() => {
     getUsersCallback()
   }, [])
@@ -31,27 +34,36 @@ const UsersView: FC<Props> = ({
     return <div>{errorMessage}</div>
   } else
     return (
-      <Container component="main" maxWidth="xs">
+      <Container
+        component="main"
+        maxWidth={false}
+        className={classes.container}
+      >
         <Grid container direction="column" alignItems="center" justify="center">
           {Array.isArray(users) &&
-            users.map((user) => (
-              <NavLink to={`/chat/${user.id}`} key={user.id}>
-                <p>{user.username}</p>
-              </NavLink>
-            ))}
+            users.map((user) => <UserCard user={user} key={user.id} />)}
           {shouldLoadMore && (
-            <Button
-              variant="contained"
-              color="primary"
-              disabled={isLoading}
-              onClick={() => getUsersCallback('', page + 1)}
-            >
-              {isLoading ? 'Загрузка' : 'Показать еще'}
-            </Button>
+            <Box pt={3}>
+              <Button
+                variant="contained"
+                color="primary"
+                disabled={isLoading}
+                onClick={() => getUsersCallback('', page + 1)}
+              >
+                {isLoading ? 'Загрузка' : 'Показать еще'}
+              </Button>
+            </Box>
           )}
         </Grid>
       </Container>
     )
 }
+
+const useStyles = makeStyles({
+  container: {
+    background: '#101010',
+    paddingBottom: '30px',
+  },
+})
 
 export default UsersView

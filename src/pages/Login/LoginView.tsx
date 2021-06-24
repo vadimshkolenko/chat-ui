@@ -28,7 +28,7 @@ const LoginView: FC<Props> = ({
   const password = useInput('')
 
   if (token) {
-    return <Redirect to={'/chats'} />
+    return <Redirect to={'/users'} />
   }
 
   const handleSubmit = (event) => {

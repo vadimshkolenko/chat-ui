@@ -6,18 +6,29 @@ export interface User {
   username: string
 }
 
-export type ActionTypes =
-  | typeof START_USERS_REQUEST
-  | typeof USERS_SUCCESS
-  | typeof USERS_ERROR
-
-export interface UsersActionType {
-  type: ActionTypes
-  payload?: string | Array<User>
+export interface UsersRequestActionType {
+  type: typeof START_USERS_REQUEST
 }
+
+export interface UsersSuccessActionType {
+  type: typeof USERS_SUCCESS
+  payload: { data: Array<User>; page: number }
+}
+
+export interface UsersErrorActionType {
+  type: typeof USERS_ERROR
+  payload: string
+}
+
+export type UsersActionTypes =
+  | UsersRequestActionType
+  | UsersSuccessActionType
+  | UsersErrorActionType
 
 export interface UsersState {
   errorMessage: string
   isLoading: boolean
   data: Array<User>
+  page: number
+  shouldLoadMore: boolean
 }

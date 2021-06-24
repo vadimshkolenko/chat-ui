@@ -6,6 +6,8 @@ import {
   selectUsers,
   selectErrorMessage,
   selectIsLoading,
+  selectPage,
+  selectShouldLoadMore,
 } from '../../store/users/selectors'
 import { useDispatch, useSelector } from 'react-redux'
 import UsersView from './UsersView'
@@ -20,13 +22,22 @@ const Users: FC = () => {
 
   const users = useSelector((state: RootState) => selectUsers(state))
 
-  const getUsersCallback = () => dispatch(getUsers())
+  const page = useSelector((state: RootState) => selectPage(state))
+
+  const shouldLoadMore = useSelector((state: RootState) =>
+    selectShouldLoadMore(state)
+  )
+
+  const getUsersCallback = (searchValue, page) =>
+    dispatch(getUsers(searchValue, page))
 
   return (
     <UsersView
       errorMessage={errorMessage}
       isLoading={isLoading}
       users={users}
+      page={page}
+      shouldLoadMore={shouldLoadMore}
       getUsersCallback={getUsersCallback}
     />
   )

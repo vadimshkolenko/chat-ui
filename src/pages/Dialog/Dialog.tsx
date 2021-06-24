@@ -6,9 +6,9 @@ import { selectToken, selectUserId } from '../../store/account/selectors'
 import { selectCurrentMessages } from '../../store/chats/selectors'
 import { RootState } from '../../store/reducers'
 import { addMessage } from '../../store/chats/actions'
-import ChatsView from './ChatsView'
+import DialogView from './DialogView'
 
-const Chats: FC = () => {
+const Dialog: FC = () => {
   const dispatch = useDispatch()
 
   // TODO исправить
@@ -24,7 +24,7 @@ const Chats: FC = () => {
   const addMessageCallback = (msg) => dispatch(addMessage(msg))
 
   return (
-    <ChatsView
+    <DialogView
       token={token}
       userId={userId}
       currentChatId={chatId}
@@ -34,4 +34,4 @@ const Chats: FC = () => {
   )
 }
 
-export default Chats
+export default Dialog

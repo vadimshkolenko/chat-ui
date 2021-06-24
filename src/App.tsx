@@ -10,7 +10,7 @@ import { token } from './static'
 import Registration from './pages/Registration/Registration'
 import Confirmation from './pages/Confirmation/Confirmation'
 import Login from './pages/Login/Login'
-import Chats from './pages/Chats/Chats'
+import Dialog from './pages/Dialog/Dialog'
 import Users from './pages/Users/Users'
 
 const App: FC = () => {
@@ -33,7 +33,7 @@ const App: FC = () => {
           <Route
             exact
             path="/chat/:chatId"
-            render={() => privateRoute(<Chats />)}
+            render={() => privateRoute(<Dialog />)}
           />
           <Route exact path="/users" render={() => privateRoute(<Users />)} />
         </Switch>

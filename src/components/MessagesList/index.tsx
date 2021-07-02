@@ -2,7 +2,7 @@ import React, { FC, RefObject } from 'react'
 import { Grid } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
-import { Message as MessageType } from '../../store/chats/types'
+import { Message as MessageType } from '../../store/chat/types'
 import Message from '../Message'
 
 interface Props {

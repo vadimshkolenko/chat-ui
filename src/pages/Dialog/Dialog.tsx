@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
 import { selectToken, selectUserId } from '../../store/account/selectors'
-import { selectCurrentMessages } from '../../store/chats/selectors'
+import { selectCurrentMessages } from '../../store/chat/selectors'
 import { RootState } from '../../store/reducers'
-import { addMessage } from '../../store/chats/actions'
+import { addMessage, resetChat } from '../../store/chat/actions'
 import DialogView from './DialogView'
 
 const Dialog: FC = () => {
@@ -23,6 +23,8 @@ const Dialog: FC = () => {
 
   const addMessageCallback = (msg) => dispatch(addMessage(msg))
 
+  const resetChatCallback = () => dispatch(resetChat())
+
   return (
     <DialogView
       token={token}
@@ -30,6 +32,7 @@ const Dialog: FC = () => {
       currentChatId={chatId}
       messages={messages}
       addMessageCallback={addMessageCallback}
+      resetChatCallback={resetChatCallback}
     />
   )
 }

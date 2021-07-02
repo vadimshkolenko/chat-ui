@@ -7,6 +7,7 @@ import {
   USERS_ERROR,
   USERS_SUCCESS,
   USERS_PAGE_SIZE,
+  USERS_RESET,
 } from './constants'
 
 export const getUsers = (searchValue = '', page = 1) => async (
@@ -23,3 +24,7 @@ export const getUsers = (searchValue = '', page = 1) => async (
     dispatch({ type: USERS_ERROR, payload: err.error ?? 'Ошибка!' })
   }
 }
+
+export const resetUsers = (): { type: string } => ({
+  type: USERS_RESET,
+})

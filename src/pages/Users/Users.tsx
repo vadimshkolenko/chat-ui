@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
 import { RootState } from '../../store/reducers'
-import { getUsers } from '../../store/users/actions'
+import { getUsers, resetUsers } from '../../store/users/actions'
 import {
   selectUsers,
   selectErrorMessage,
@@ -31,6 +31,8 @@ const Users: FC = () => {
   const getUsersCallback = (searchValue, page) =>
     dispatch(getUsers(searchValue, page))
 
+  const resetUsersCallback = () => dispatch(resetUsers())
+
   return (
     <UsersView
       errorMessage={errorMessage}
@@ -39,6 +41,7 @@ const Users: FC = () => {
       page={page}
       shouldLoadMore={shouldLoadMore}
       getUsersCallback={getUsersCallback}
+      resetUsersCallback={resetUsersCallback}
     />
   )
 }

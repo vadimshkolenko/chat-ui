@@ -5,7 +5,7 @@ import { confirmationReducer } from './confirmation/reducers'
 import { loginReducer } from './login/reducers'
 import { registrationReducer } from './registration/reducers'
 import { usersReducer } from './users/reducers'
-import { chatsReducer } from './chats/reducers'
+import { chatReducer } from './chat/reducers'
 
 export const rootReducer = combineReducers({
   account: accountReducer,
@@ -13,7 +13,7 @@ export const rootReducer = combineReducers({
   login: loginReducer,
   registration: registrationReducer,
   users: usersReducer,
-  chats: chatsReducer,
+  chat: chatReducer,
 })
 
 export type RootState = ReturnType<typeof rootReducer>

@@ -12,6 +12,7 @@ interface Props {
   page: number
   shouldLoadMore: boolean
   getUsersCallback: (searchValue?: string, page?: number) => void
+  resetUsersCallback: () => void
 }
 
 const UsersView: FC<Props> = ({
@@ -19,6 +20,7 @@ const UsersView: FC<Props> = ({
   isLoading,
   users,
   getUsersCallback,
+  resetUsersCallback,
   page,
   shouldLoadMore,
 }) => {
@@ -26,6 +28,8 @@ const UsersView: FC<Props> = ({
 
   useEffect(() => {
     getUsersCallback()
+
+    return resetUsersCallback
   }, [])
 
   if (isLoading && !users.length) {

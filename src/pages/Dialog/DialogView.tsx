@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles'
 
 import useInput from '../../hooks/useInput'
 import socketClient from '../../socket'
-import { Message as MessageType } from '../../store/chats/types'
+import { Message as MessageType } from '../../store/chat/types'
 import MessagesList from '../../components/MessagesList'
 import MessageForm from '../../components/MessageForm'
 
@@ -14,6 +14,7 @@ interface IProps {
   currentChatId: string
   messages: Array<MessageType>
   addMessageCallback: (message: MessageType) => void
+  resetChatCallback: () => void
 }
 
 const DialogView: FC<IProps> = ({
@@ -22,6 +23,7 @@ const DialogView: FC<IProps> = ({
   currentChatId,
   messages,
   addMessageCallback,
+  resetChatCallback,
 }) => {
   const classes = useStyles()
 
@@ -31,6 +33,12 @@ const DialogView: FC<IProps> = ({
   const socket: any = socketClient(token)
 
   socket.connect()
+
+  useEffect(() => resetChatCallback, [])
+
+  useEffect(() => {
+    return () => socket.removeAllListeners()
+  }, [])
 
   // TODO исправить типизацию
   useEffect((): any => {

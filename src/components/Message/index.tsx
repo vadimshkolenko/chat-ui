@@ -3,7 +3,7 @@ import { Box, Paper, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import classnames from 'classnames'
 
-import { Message as MessageType } from '../../store/chats/types'
+import { Message as MessageType } from '../../store/chat/types'
 
 interface Props {
   message: MessageType

@@ -4,6 +4,7 @@ import {
   USERS_SUCCESS,
   START_USERS_REQUEST,
   USERS_PAGE_SIZE,
+  USERS_RESET,
 } from './constants'
 
 const initialState = {
@@ -33,6 +34,8 @@ export const usersReducer = (
     case USERS_ERROR:
       const errorMessage = action.payload
       return { ...state, errorMessage, isLoading: false }
+    case USERS_RESET:
+      return initialState
     default:
       return state
   }

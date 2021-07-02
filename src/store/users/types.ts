@@ -1,4 +1,9 @@
-import { START_USERS_REQUEST, USERS_SUCCESS, USERS_ERROR } from './constants'
+import {
+  START_USERS_REQUEST,
+  USERS_SUCCESS,
+  USERS_ERROR,
+  USERS_RESET,
+} from './constants'
 
 export interface User {
   id: string
@@ -6,24 +11,29 @@ export interface User {
   username: string
 }
 
-export interface UsersRequestActionType {
+interface UsersRequestActionType {
   type: typeof START_USERS_REQUEST
 }
 
-export interface UsersSuccessActionType {
+interface UsersSuccessActionType {
   type: typeof USERS_SUCCESS
   payload: { data: Array<User>; page: number }
 }
 
-export interface UsersErrorActionType {
+interface UsersErrorActionType {
   type: typeof USERS_ERROR
   payload: string
+}
+
+interface UsersResetActionType {
+  type: typeof USERS_RESET
 }
 
 export type UsersActionTypes =
   | UsersRequestActionType
   | UsersSuccessActionType
   | UsersErrorActionType
+  | UsersResetActionType
 
 export interface UsersState {
   errorMessage: string
